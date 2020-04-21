@@ -1,0 +1,12 @@
+lib里面的四个组件都是基于OpenCV4.1.1，使用的是VS2017重新生成的组件
+原来的代码其中ssim_psnr.lib和videotools。lib组件是在自己的电脑上，使用OpenCV4.2.0，在VS2019上面生成的，这里面已经经过了更改
+
+文件简介：
+source_code：里面包含了四个原始项目的原始文件
+    （1） fast_guided_filter_with_no_speed：仅仅用到了include <opencv2/opencv.hpp>这一个头文件，里面是自己实现的对于快速导向率算法，分别针对灰度图像、彩色图像的快速导向滤波，因为仅仅使用了opencv的基本功能，是没有经过任何加速优化的，所以为 no speed
+
+   （2）opencv_guidedfilter_lib_no_ximprog：在opencv-contrib的ximprog的基础之上进行的改进快速导向滤波，因为ximprog里面仅仅实现了导向滤波，没有实现快速导向滤波，自己在此基础之上进行的改进，用到了很多来自ximprog里面的头文件，因为是改进版本，里面使用到了SSE加速等技术，所以是加速了的，但是没有使用ximprog，即我不需要使用ximprog模块，我把ximprog里面的一些功能自己拿出来进行了封装
+
+   （3）ssim_psnr_cpp_v0.2：自己实现的关于使用opencv实现峰值信噪比PSNR以及结构相似性SSIM的实现
+
+   （4）video_tools_v0.1 ：视频读写，格式转换工具，这里主要是针对YUV格式的视频来进行读写以及格式转换
